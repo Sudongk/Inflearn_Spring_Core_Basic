@@ -1,8 +1,10 @@
 package spring.core.basic.order;
 
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import spring.core.basic.AppConfig;
 import spring.core.basic.member.Grade;
 import spring.core.basic.member.Member;
 import spring.core.basic.member.MemberService;
@@ -12,8 +14,18 @@ import static org.assertj.core.api.Assertions.*;
 
 class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+//    MemberService memberService = new MemberServiceImpl();
+//    OrderService orderService = new OrderServiceImpl();
+
+    private MemberService memberService;
+    private OrderService orderService;
+
+    @BeforeEach
+    void setUp() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
     @DisplayName("Member 생성, Order 생성")
