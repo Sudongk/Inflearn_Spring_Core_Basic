@@ -4,6 +4,8 @@ package spring.core.basic.order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.core.basic.AppConfig;
 import spring.core.basic.member.Grade;
 import spring.core.basic.member.Member;
@@ -20,11 +22,18 @@ class OrderServiceTest {
     private MemberService memberService;
     private OrderService orderService;
 
+//    @BeforeEach
+//    void setUp() {
+//        AppConfig appConfig = new AppConfig();
+//        memberService = appConfig.memberService();
+//        orderService = appConfig.orderService();
+//    }
+
     @BeforeEach
-    void setUp() {
-        AppConfig appConfig = new AppConfig();
-        memberService = appConfig.memberService();
-        orderService = appConfig.orderService();
+    void setUpByDiContainer() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        memberService = applicationContext.getBean("memberService", MemberService.class);
+        orderService = applicationContext.getBean("orderService", OrderService.class);
     }
 
     @Test
