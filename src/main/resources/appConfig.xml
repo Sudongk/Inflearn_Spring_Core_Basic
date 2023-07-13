@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="memberRepository" class="spring.core.basic.member.MemoryMemberRepository"/>
+
+    <bean id="discountPolicy" class="spring.core.basic.discount.RateDiscountPolicy"/>
+
+    <bean id="memberService" class="spring.core.basic.member.MemberServiceImpl">
+        <constructor-arg name="memberRepository" ref="memberRepository"/>
+    </bean>
+
+    <!-- OrderServiceImpl를 orderService라는 빈으로 등록, 빈 등록에 필요한 다른 빈 주입 -->
+    <bean id="orderService" class="spring.core.basic.order.OrderServiceImpl">
+        <constructor-arg name="memberRepository" ref="memberRepository"/>
+        <constructor-arg name="discountPolicy" ref="discountPolicy"/>
+    </bean>
+</beans>
