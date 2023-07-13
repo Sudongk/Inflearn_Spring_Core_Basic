@@ -28,4 +28,14 @@ public class OrderServiceImpl implements OrderService {
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    // 싱글톤 확인 테스트를 위한 getter
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
+
+    // 싱글톤 확인 테스트를 위한 getter
+    public DiscountPolicy getDiscountPolicy() {
+        return discountPolicy;
+    }
 }
