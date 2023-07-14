@@ -11,6 +11,7 @@ import spring.core.basic.member.MemberServiceImpl;
 import spring.core.basic.member.MemoryMemberRepository;
 import spring.core.basic.order.OrderService;
 import spring.core.basic.order.OrderServiceImpl;
+import spring.core.basic.singleton.StatefulService;
 
 @Configuration
 public class AppConfig {
