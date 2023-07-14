@@ -1,10 +1,17 @@
 package spring.core.basic.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService {
 
-    //    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    // private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final MemberRepository memberRepository;
 
+    // MemberServiceImpl은 MemberRepository 타입의 구현체가 주입되어야 한다.
+    // @Autowired 어노테이션으로 인해 스프링 빈에서 MemberRepository 타입의 빈을 가져와서 자동(Auto)으로 주입한다.
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

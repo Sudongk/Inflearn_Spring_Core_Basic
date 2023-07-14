@@ -1,8 +1,10 @@
 package spring.core.basic.discount;
 
+import org.springframework.stereotype.Component;
 import spring.core.basic.member.Grade;
 import spring.core.basic.member.Member;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private final int discountPercent = 10;
@@ -12,6 +14,7 @@ public class RateDiscountPolicy implements DiscountPolicy {
         if (member.getGrade() == Grade.VIP) {
             return price * discountPercent / 100;
         }
+
         return 0;
     }
 }
