@@ -1,6 +1,5 @@
 package spring.core.basic.scan.filter;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
@@ -35,4 +34,4 @@ public class ComponentFilterAppConfigTest {
     static class ComponentFilterAppConfig {
 
     }
-    }
+}
