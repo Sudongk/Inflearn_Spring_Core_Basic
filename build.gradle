@@ -23,9 +23,21 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 기본적으로 모든 하위 의존성을 가져옴
+    // testImplementation 'org.springframework.boot:spring-boot-starter-test
+
+    // 의존성 블록을 사용하여 추가 구성 옵션을 지정
+    // exclude 구문을 사용하여 org.junit.vintage:junit-vintage-engine 의존성을 제외합니다. 이는 해당 의존성을 가져오지 않도록 설정
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    // lombok 라이브러리 추가
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
