@@ -23,7 +23,8 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-
+    // Java에서 의존성 주입(Dependency Injection)을 지원하기 위한 JSR 330 인터페이스를 제공하는 라이브러리
+    implementation 'javax.inject:javax.inject:1'
     // 기본적으로 모든 하위 의존성을 가져옴
     // testImplementation 'org.springframework.boot:spring-boot-starter-test
 
